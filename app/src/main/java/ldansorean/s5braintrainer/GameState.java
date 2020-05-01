@@ -6,9 +6,11 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * Class storing a game challenge state: the two numbers to be added and four possible sums one of them being the correct one.
+ * Class storing the game state: current challenge and score.
+ * The current challenge consists of the two numbers to be added and four possible sums. One of them is the correct one.
+ * The score consists of the number of questions asked and the number of correct answers.
  */
-public class GameChallenge {
+public class GameState {
 
     private static final int NUMBER_MAX = 20;
     private static final int NUMBER_MIN = 1;
@@ -17,11 +19,12 @@ public class GameChallenge {
 
     private int no1, no2;
     private ArrayList<Integer> possibleSums;
+    private int noOfQuestions, correctAnswers;
     private Random randomiser;
 
-    public GameChallenge() {
+    public GameState() {
         randomiser = new Random();
-        newChallenge();
+        startGame();
     }
 
     /**
@@ -62,11 +65,42 @@ public class GameChallenge {
     }
 
     /**
+     * @return number of question asked during the current game.
+     */
+    public int getNoOfQuestions() {
+        return noOfQuestions;
+    }
+
+    /**
+     * @return number of questions answered correctly during the current game.
+     */
+    public int getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+    /**
      * Checks if the selected sum is correct.
      * @param n - The position of the chosen sum.
      * @return true if that is the correct sum or false otherwise.
      */
     public boolean isSumCorrect(int n) {
         return no1 + no2 == possibleSums.get(n);
+    }
+
+    /**
+     * Update the score according to the sum selected by the user. Also increments the number of asked questions.
+     * @param n - The position of the sum chosen by user.
+     */
+    public void markAnswer(int n) {
+        noOfQuestions++;
+        if (isSumCorrect(n)) {
+            correctAnswers++;
+        }
+    }
+
+    public void startGame() {
+        noOfQuestions = 0;
+        correctAnswers = 0;
+        newChallenge();
     }
 }
