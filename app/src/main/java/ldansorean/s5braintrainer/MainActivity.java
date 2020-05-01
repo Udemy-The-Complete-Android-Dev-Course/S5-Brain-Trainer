@@ -2,6 +2,7 @@ package ldansorean.s5braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                MediaPlayer.create(getApplicationContext(), R.raw.airhorn).start();
                 setSumButtonsEnabled(false);
                 timeLabel.setText("0s");
                 resultLabel.setText("Your score: " + gameState.getCorrectAnswers() + " out of " + gameState.getNoOfQuestions());
