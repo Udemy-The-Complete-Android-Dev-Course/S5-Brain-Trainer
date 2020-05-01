@@ -6,6 +6,161 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gameView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/topLabels"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/timeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_weight="0"
+                android:background="#DEF8DF"
+                android:text="30s"
+                android:textAlignment="center"
+                android:textColor="#494949"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/sumLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:text="10 + 10"
+                android:textAlignment="center"
+                android:textColor="#494949"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/scoreLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="#B5D9F6"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="0/0"
+                android:textAlignment="center"
+                android:textColor="#494949"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/possibleSumsTable"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topLabels">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FFB2AD"
+                    android:onClick="sumSelected"
+                    android:tag="0"
+                    android:text="Button"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F3A3CC"
+                    android:onClick="sumSelected"
+                    android:tag="1"
+                    android:text="Button"
+                    android:textSize="30sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FFDCA8"
+                    android:onClick="sumSelected"
+                    android:tag="2"
+                    android:text="Button"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F3ECB0"
+                    android:onClick="sumSelected"
+                    android:tag="3"
+                    android:text="Button"
+                    android:textSize="30sp" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/resultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Correct"
+            android:textColor="#494949"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/possibleSumsTable" />
+
+        <Button
+            android:id="@+id/playAgain"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:onClick="onPlayAgainClick"
+            android:text="Play again"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <Button
         android:id="@+id/go"
         android:layout_width="200sp"
@@ -15,152 +170,10 @@
         android:onClick="go"
         android:text="Go"
         android:textSize="70sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/topLabels"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/timeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:layout_weight="0"
-            android:background="#DEF8DF"
-            android:text="30s"
-            android:textAlignment="center"
-            android:textColor="#494949"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/sumLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:text="10 + 10"
-            android:textAlignment="center"
-            android:textColor="#494949"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/scoreLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="#B5D9F6"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="0/0"
-            android:textAlignment="center"
-            android:textColor="#494949"
-            android:textSize="30sp" />
-
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/possibleSumsTable"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topLabels">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#FFB2AD"
-                android:onClick="sumSelected"
-                android:tag="0"
-                android:text="Button"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#F3A3CC"
-                android:onClick="sumSelected"
-                android:tag="1"
-                android:text="Button"
-                android:textSize="30sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#FFDCA8"
-                android:onClick="sumSelected"
-                android:tag="2"
-                android:text="Button"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#F3ECB0"
-                android:onClick="sumSelected"
-                android:tag="3"
-                android:text="Button"
-                android:textSize="30sp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/resultLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Correct"
-        android:textColor="#494949"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/possibleSumsTable" />
-
-    <Button
-        android:id="@+id/playAgain"
-        style="@android:style/Widget.Button.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="onPlayAgainClick"
-        android:text="Play again"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultLabel" />
 </androidx.constraintlayout.widget.ConstraintLayout>

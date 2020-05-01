@@ -1,6 +1,7 @@
 package ldansorean.s5braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,11 +13,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int GAME_DURATION_MS = 10 * 1000;
+    private static final int GAME_DURATION_MS = 30 * 1000;
     private GameState gameState;
     private TextView sumLabel, timeLabel, resultLabel, scoreLabel;
     private Button playAgain;
     private TableLayout possibleSumsTable;
+    private ConstraintLayout gameView;
 
 
     @Override
@@ -30,24 +32,17 @@ public class MainActivity extends AppCompatActivity {
         possibleSumsTable = findViewById(R.id.possibleSumsTable);
         scoreLabel = findViewById(R.id.scoreLabel);
         playAgain = findViewById(R.id.playAgain);
+        gameView = findViewById(R.id.gameView);
         gameState = new GameState();
 
         //initially hide all gameplay view components and show only the start button
-        findViewById(R.id.go).setVisibility(View.VISIBLE);
-        findViewById(R.id.topLabels).setVisibility(View.INVISIBLE);
-        possibleSumsTable.setVisibility(View.INVISIBLE);
-        resultLabel.setVisibility(View.INVISIBLE);
-        scoreLabel.setVisibility(View.INVISIBLE);
+        gameView.setVisibility(ConstraintLayout.INVISIBLE);
         playAgain.setVisibility(View.INVISIBLE);
     }
 
     public void go(View view) {
         findViewById(R.id.go).setVisibility(View.INVISIBLE);
-        findViewById(R.id.topLabels).setVisibility(View.VISIBLE);
-        possibleSumsTable.setVisibility(View.VISIBLE);
-        resultLabel.setVisibility(View.VISIBLE);
-        scoreLabel.setVisibility(View.VISIBLE);
-
+        gameView.setVisibility(ConstraintLayout.VISIBLE);
         startNewGame();
     }
 
